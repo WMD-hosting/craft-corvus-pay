@@ -12,7 +12,7 @@ return [
     'Secret key' => 'Tajni ključ',
     'Issued in the CorvusPay merchant portal. Prefer an environment variable, e.g. $CORVUS_SECRET_KEY.' => 'Izdaje se u CorvusPay merchant portalu. Preporuka je varijabla okoline, npr. $CORVUS_SECRET_KEY.',
     'Checkout URL' => 'URL naplate',
-    'https://test-wallet.corvuspay.com/ for testing, https://wallet.corvuspay.com/ for production.' => 'https://test-wallet.corvuspay.com/ za testiranje, https://wallet.corvuspay.com/ za produkciju.',
+    'https://wallet.test.corvuspay.com/ for testing, https://wallet.corvuspay.com/ for production.' => 'https://wallet.test.corvuspay.com/ za testiranje, https://wallet.corvuspay.com/ za produkciju.',
     'Merchant API URL' => 'URL merchant API-ja',
     'https://testcps.corvus.hr/ for testing, https://cps.corvus.hr/ for production. Used for status checks and refunds.' => 'https://testcps.corvus.hr/ za testiranje, https://cps.corvus.hr/ za produkciju. Koristi se za provjeru statusa i povrate.',
     'Client certificate' => 'Klijentski certifikat',

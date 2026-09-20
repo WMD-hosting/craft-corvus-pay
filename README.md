@@ -26,7 +26,7 @@ Then **Commerce → System Settings → Gateways → New gateway**, type
 | Setting | Notes |
 |---|---|
 | Store ID, Secret key | from the CorvusPay merchant portal; environment variables are supported |
-| Checkout URL | `https://test-wallet.corvuspay.com/` while testing, `https://wallet.corvuspay.com/` in production |
+| Checkout URL | `https://wallet.test.corvuspay.com/` while testing, `https://wallet.corvuspay.com/` in production |
 | Merchant API URL | `https://testcps.corvus.hr/` while testing, `https://cps.corvus.hr/` in production |
 | Certificate file, private key file, key password | the client certificate CorvusPay issued for the store; needed for status checks and refunds; keep the files outside the web root (`@root/certs/…`) |
 | Installments mode | none, fixed (`number_of_installments`), flexible (`payment_all`), tiered by order amount, or dynamic per card brand (`payment_all_dynamic` + `payment_<brand>`) |

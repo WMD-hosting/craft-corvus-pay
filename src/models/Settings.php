@@ -22,8 +22,8 @@ class Settings extends Model
     /** @var string Secret key issued by CorvusPay. */
     public string $secretKey = '';
 
-    /** @var string Hosted checkout base URL: test-wallet.corvuspay.com or wallet.corvuspay.com. */
-    public string $storeUrl = 'https://test-wallet.corvuspay.com/';
+    /** @var string Hosted checkout base URL: wallet.test.corvuspay.com or wallet.corvuspay.com. */
+    public string $storeUrl = 'https://wallet.test.corvuspay.com/';
 
     /** @var string Merchant API base URL: testcps.corvus.hr or cps.corvus.hr. */
     public string $storeUrlStatus = 'https://testcps.corvus.hr/';

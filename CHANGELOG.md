@@ -1,5 +1,10 @@
 # Release Notes for CorvusPay
 
+## 1.0.1 - 2026-09-20
+
+### Fixed
+- Default test checkout URL is https://wallet.test.corvuspay.com/ (the former test-wallet host no longer resolves).
+
 ## 1.0.0 - 2026-09-20
 
 First public release, after two years in production on Croatian stores.
