@@ -1,0 +1,69 @@
+{
+    "name": "wmd/craft-corvus-pay",
+    "description": "CorvusPay payment gateway for Craft Commerce: hosted checkout, installments, refunds and partial refunds.",
+    "type": "craft-plugin",
+    "license": "MIT",
+    "keywords": [
+        "craft",
+        "craftcms",
+        "craft-plugin",
+        "craft-commerce",
+        "commerce",
+        "payment",
+        "gateway",
+        "corvus",
+        "corvuspay",
+        "croatia",
+        "installments"
+    ],
+    "support": {
+        "docs": "https://github.com/WMD-hosting/craft-corvus-pay/blob/main/README.md",
+        "issues": "https://github.com/WMD-hosting/craft-corvus-pay/issues"
+    },
+    "authors": [
+        {
+            "name": "WMD",
+            "homepage": "https://wmd.hr/"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "craftcms/cms": "^5.0.0",
+        "craftcms/commerce": "^5.0.0",
+        "ext-curl": "*",
+        "ext-simplexml": "*"
+    },
+    "require-dev": {
+        "craftcms/ecs": "dev-main",
+        "craftcms/phpstan": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "wmd\\craftcorvuspay\\": "src/"
+        }
+    },
+    "extra": {
+        "handle": "corvus-pay",
+        "name": "CorvusPay",
+        "developer": "WMD",
+        "developerUrl": "https://wmd.hr/",
+        "documentationUrl": "https://github.com/WMD-hosting/craft-corvus-pay/blob/main/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/WMD-hosting/craft-corvus-pay/main/CHANGELOG.md",
+        "class": "wmd\\craftcorvuspay\\CorvusPay"
+    },
+    "scripts": {
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --ansi --fix",
+        "phpstan": "phpstan --memory-limit=1G"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.2"
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect x="6" y="6" width="88" height="88" rx="18" fill="#1F2937"/>
+  <!-- card -->
+  <rect x="20" y="30" width="60" height="40" rx="7" fill="#F8FAFC"/>
+  <rect x="20" y="39" width="60" height="9" fill="#0EA5E9"/>
+  <rect x="27" y="55" width="20" height="6" rx="3" fill="#94A3B8"/>
+  <!-- installments dots -->
+  <circle cx="62" cy="58" r="3" fill="#0EA5E9"/>
+  <circle cx="70" cy="58" r="3" fill="#0EA5E9" opacity=".6"/>
+</svg>

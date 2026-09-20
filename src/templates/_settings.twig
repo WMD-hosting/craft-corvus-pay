@@ -1,0 +1,179 @@
+{# @var plugin \wmd\craftcorvuspay\CorvusPay #}
+{# @var settings \wmd\craftcorvuspay\models\Settings #}
+{% import '_includes/forms.twig' as forms %}
+{% set t = 'corvus-pay' %}
+
+<h2>{{ 'Store'|t(t) }}</h2>
+
+{{ forms.autosuggestField({
+    first: true,
+    label: 'Store ID'|t(t),
+    id: 'storeId',
+    name: 'storeId',
+    value: settings.storeId,
+    required: true,
+    suggestEnvVars: true,
+    errors: settings.getErrors('storeId'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Secret key'|t(t),
+    instructions: 'Issued in the CorvusPay merchant portal. Prefer an environment variable, e.g. $CORVUS_SECRET_KEY.'|t(t),
+    id: 'secretKey',
+    name: 'secretKey',
+    value: settings.secretKey,
+    required: true,
+    suggestEnvVars: true,
+    errors: settings.getErrors('secretKey'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Checkout URL'|t(t),
+    instructions: 'https://test-wallet.corvuspay.com/ for testing, https://wallet.corvuspay.com/ for production.'|t(t),
+    id: 'storeUrl',
+    name: 'storeUrl',
+    value: settings.storeUrl,
+    required: true,
+    suggestEnvVars: true,
+    errors: settings.getErrors('storeUrl'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Merchant API URL'|t(t),
+    instructions: 'https://testcps.corvus.hr/ for testing, https://cps.corvus.hr/ for production. Used for status checks and refunds.'|t(t),
+    id: 'storeUrlStatus',
+    name: 'storeUrlStatus',
+    value: settings.storeUrlStatus,
+    required: true,
+    suggestEnvVars: true,
+    errors: settings.getErrors('storeUrlStatus'),
+}) }}
+
+<hr>
+<h2>{{ 'Client certificate'|t(t) }}</h2>
+<p class="light">{{ 'The merchant API (status, refunds) needs the client certificate CorvusPay issued for the store. Keep the files outside the web root and point at them with an alias or an environment variable.'|t(t) }}</p>
+
+{{ forms.autosuggestField({
+    label: 'Certificate file (PEM)'|t(t),
+    id: 'pathToFileCrtPem',
+    name: 'pathToFileCrtPem',
+    value: settings.pathToFileCrtPem,
+    suggestEnvVars: true,
+    suggestAliases: true,
+    placeholder: '@root/certs/corvus.crt.pem',
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Private key file (PEM)'|t(t),
+    id: 'pathToFileKeyPem',
+    name: 'pathToFileKeyPem',
+    value: settings.pathToFileKeyPem,
+    suggestEnvVars: true,
+    suggestAliases: true,
+    placeholder: '@root/certs/corvus.key.pem',
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Private key password'|t(t),
+    id: 'keyForFiles',
+    name: 'keyForFiles',
+    value: settings.keyForFiles,
+    suggestEnvVars: true,
+    placeholder: '$CORVUS_KEY_PASSWORD',
+}) }}
+
+<hr>
+<h2>{{ 'Installments'|t(t) }}</h2>
+
+{{ forms.selectField({
+    label: 'Installments mode'|t(t),
+    instructions: 'Only one variant is sent per request, following CorvusPay precedence rules.'|t(t),
+    id: 'installmentsMode',
+    name: 'installmentsMode',
+    value: settings.installmentsMode,
+    options: [
+        { label: 'None'|t(t), value: 'none' },
+        { label: 'Fixed number of installments'|t(t), value: 'fixed' },
+        { label: 'Flexible (payment_all)'|t(t), value: 'flexible' },
+        { label: 'Flexible, tiered by amount'|t(t), value: 'flexibleTiered' },
+        { label: 'Dynamic per card brand'|t(t), value: 'dynamic' },
+    ],
+}) }}
+
+{{ forms.textField({
+    label: 'Fixed: number of installments'|t(t),
+    instructions: 'Two digits, e.g. 06.'|t(t),
+    id: 'numberOfInstallments',
+    name: 'numberOfInstallments',
+    value: settings.numberOfInstallments,
+    size: 4,
+    errors: settings.getErrors('numberOfInstallments'),
+}) }}
+
+{{ forms.textField({
+    label: 'Flexible: payment_all'|t(t),
+    instructions: 'Yxxyy, e.g. Y0299 lets the customer pick 2 to 99 installments.'|t(t),
+    id: 'paymentAll',
+    name: 'paymentAll',
+    value: settings.paymentAll,
+    size: 8,
+    errors: settings.getErrors('paymentAll'),
+}) }}
+
+{{ forms.textField({
+    label: 'Tiered: threshold 1'|t(t),
+    instructions: 'Orders below this amount use tier 1.'|t(t),
+    id: 'paymentAllTier1Threshold', name: 'paymentAllTier1Threshold', value: settings.paymentAllTier1Threshold, size: 8,
+}) }}
+{{ forms.textField({
+    label: 'Tiered: threshold 2'|t(t),
+    instructions: 'Orders below this amount use tier 2, anything above uses tier 3.'|t(t),
+    id: 'paymentAllTier2Threshold', name: 'paymentAllTier2Threshold', value: settings.paymentAllTier2Threshold, size: 8,
+}) }}
+{{ forms.textField({ label: 'Tiered: tier 1 payment_all'|t(t), id: 'paymentAllTier1', name: 'paymentAllTier1', value: settings.paymentAllTier1, size: 8, errors: settings.getErrors('paymentAllTier1') }) }}
+{{ forms.textField({ label: 'Tiered: tier 2 payment_all'|t(t), id: 'paymentAllTier2', name: 'paymentAllTier2', value: settings.paymentAllTier2, size: 8, errors: settings.getErrors('paymentAllTier2') }) }}
+{{ forms.textField({ label: 'Tiered: tier 3 payment_all'|t(t), id: 'paymentAllTier3', name: 'paymentAllTier3', value: settings.paymentAllTier3, size: 8, errors: settings.getErrors('paymentAllTier3') }) }}
+
+{{ forms.textareaField({
+    label: 'Dynamic: per-brand flags'|t(t),
+    instructions: 'One per line, e.g. payment_visa=Y1224. payment_all_dynamic=true is sent automatically.'|t(t),
+    id: 'paymentBrandParams',
+    name: 'paymentBrandParams',
+    value: settings.paymentBrandParams,
+    rows: 4,
+}) }}
+
+<hr>
+<h2>{{ 'Storefront'|t(t) }}</h2>
+
+{{ forms.elementSelectField({
+    label: 'Logo'|t(t),
+    instructions: 'Shown next to the payment method; available in templates as craft.corvus.logo.'|t(t),
+    id: 'logoId',
+    name: 'logoId',
+    elements: settings.logoId ? craft.assets.id(settings.logoId).all() : [],
+    elementType: 'craft\\elements\\Asset',
+    criteria: { kind: 'image' },
+    limit: 1,
+    viewMode: 'large',
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Fallback success URL'|t(t),
+    instructions: 'Used when the order has no return URL.'|t(t),
+    id: 'successUrl', name: 'successUrl', value: settings.successUrl, suggestEnvVars: true,
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Fallback cancel URL'|t(t),
+    instructions: 'Used when the order has no cancel URL.'|t(t),
+    id: 'failUrl', name: 'failUrl', value: settings.failUrl, suggestEnvVars: true,
+}) }}
+
+<hr>
+<h2>{{ 'CorvusPay merchant portal'|t(t) }}</h2>
+<p>{{ 'Enter these URLs for the store at'|t(t) }} <a href="https://merchant.corvuspay.com/" target="_blank" rel="noopener">merchant.corvuspay.com</a>:</p>
+<ul class="bullets">
+    <li><strong>{{ 'Success URL'|t(t) }}:</strong> <code>{{ actionUrl('corvus-pay/payment/success') }}</code></li>
+    <li><strong>{{ 'Cancel URL'|t(t) }}:</strong> <code>{{ actionUrl('corvus-pay/payment/cancel') }}</code></li>
+</ul>
