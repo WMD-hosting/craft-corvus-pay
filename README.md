@@ -37,8 +37,8 @@ In the CorvusPay merchant portal enter the two post-back URLs the settings
 page prints:
 
 ```
-Success URL: https://example.com/index.php?p=actions/corvus-pay/payment/success
-Cancel URL:  https://example.com/index.php?p=actions/corvus-pay/payment/cancel
+Success URL: https://example.com/actions/corvus-pay/payment/success
+Cancel URL:  https://example.com/actions/corvus-pay/payment/cancel
 ```
 
 ## How a payment runs

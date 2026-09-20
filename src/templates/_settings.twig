@@ -174,6 +174,6 @@
 <h2>{{ 'CorvusPay merchant portal'|t(t) }}</h2>
 <p>{{ 'Enter these URLs for the store at'|t(t) }} <a href="https://merchant.corvuspay.com/" target="_blank" rel="noopener">merchant.corvuspay.com</a>:</p>
 <ul class="bullets">
-    <li><strong>{{ 'Success URL'|t(t) }}:</strong> <code>{{ actionUrl('corvus-pay/payment/success') }}</code></li>
-    <li><strong>{{ 'Cancel URL'|t(t) }}:</strong> <code>{{ actionUrl('corvus-pay/payment/cancel') }}</code></li>
+    <li><strong>{{ 'Success URL'|t(t) }}:</strong> <code>{{ siteUrl(craft.app.config.general.actionTrigger ~ '/corvus-pay/payment/success') }}</code></li>
+    <li><strong>{{ 'Cancel URL'|t(t) }}:</strong> <code>{{ siteUrl(craft.app.config.general.actionTrigger ~ '/corvus-pay/payment/cancel') }}</code></li>
 </ul>

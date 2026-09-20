@@ -1,5 +1,10 @@
 # Release Notes for CorvusPay
 
+## 1.0.2 - 2026-09-20
+
+### Fixed
+- The settings page printed the post-back URLs with the control-panel prefix; they are site action URLs.
+
 ## 1.0.1 - 2026-09-20
 
 ### Fixed
