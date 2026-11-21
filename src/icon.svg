@@ -1,10 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <rect x="6" y="6" width="88" height="88" rx="18" fill="#1F2937"/>
-  <!-- card -->
-  <rect x="20" y="30" width="60" height="40" rx="7" fill="#F8FAFC"/>
-  <rect x="20" y="39" width="60" height="9" fill="#0EA5E9"/>
-  <rect x="27" y="55" width="20" height="6" rx="3" fill="#94A3B8"/>
-  <!-- installments dots -->
-  <circle cx="62" cy="58" r="3" fill="#0EA5E9"/>
-  <circle cx="70" cy="58" r="3" fill="#0EA5E9" opacity=".6"/>
+  <defs>
+    <linearGradient id="corvus-t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#056a9c"/><stop offset=".55" stop-color="#0679ad"/><stop offset="1" stop-color="#12a0d4"/></linearGradient>
+    <clipPath id="corvus-c"><rect x="6" y="6" width="88" height="88" rx="18"/></clipPath>
+  </defs>
+  <rect x="6" y="6" width="88" height="88" rx="18" fill="url(#corvus-t)"/>
+  <!-- two pieces of the wmd.hr tile pattern -->
+  <g clip-path="url(#corvus-c)">
+    <path d="M94 6V30A24 24 0 0 1 70 6Z" fill="#5ccbee"/>
+    <path d="M6 94V70A24 24 0 0 1 30 94Z" fill="#5ccbee" opacity=".55"/>
+  </g>
+  <rect x="21" y="30" width="58" height="40" rx="7" fill="#fff"/>
+  <rect x="21" y="39" width="58" height="9" fill="#0EA5E9"/>
+  <rect x="28" y="55" width="20" height="6" rx="3" fill="#94A3B8"/>
+  <circle cx="61" cy="58" r="3.4" fill="#f05a28"/>
+  <circle cx="70" cy="58" r="3.4" fill="#f05a28" opacity=".55"/>
 </svg>
